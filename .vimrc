@@ -81,4 +81,21 @@ endif
 :map <C-j> 10<C-e>10j
 :map <C-k> 10<C-y>10k
 
+"au BufWritePre * :set binary | set noeol
+"au BufWritePost * :set nobinary | set eol
+
+set fileformat=unix " endline setted to \n
+set mouse=a
+
+" Key maps
+" ========
+" cycle between buffers
+map <C-Left> <ESC>:bPrevious!<CR>
+map <C-Right> <ESC>:bNext!<CR>
+
+" Airline settings
+" Enable the list of buffers
+
+let g:airline#extensions#tabline#enabled = 1
+
 
