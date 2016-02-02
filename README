@@ -9,10 +9,6 @@ Usage:
 Add a symbolic link from your home directory to the .vimrc file in this repository.
 ex. ln -s ~/.vimrc ~/vim/.vimrc
 
-Mappings in this config:
-ctrl-j = move window down 10 lines
-ctrl-k = move window up 10 lines
-
 Hints:
 <command mode> (enter by hitting ESC)
 j = move down one line
@@ -28,17 +24,42 @@ p = paste copied text
 gg = go to beginning of file
 GG = go to end of file
 dd = delete current line
+d^ = delete to beginning of line
 d$ = delete from cursor to end of line
 dw = delete word at cursor
 d## = delete current line and ## following lines
 dgg = delete current line to beginning of file
 dGG = delete current line to end of file
-Commands (precede with ':')
+
+Commands preceded by `:` (normal mode)
 w = write
-q = quite
+q = quit
 wq = write + save
 q! = quite without saving
 %s/<pcre-pattern>/<replace>/[g] = global replace
 %/<pcre-pattern>//gn = count occurances of pattern
 set hlsearch = highlight matches
+!<shell command> = execute shell command
+!! = repeat last shell command
+>, < = indent/outdent hilighted selection. precede with a number to multiply amount
+r = read file into current buffer at cursor
+
+Custom mappings:
+ctrl-j = scroll down 10 lines
+ctrl-k = scroll up 10 lines
+ctrl-M-j = scroll down 20 lines
+ctrl-M-k = scroll up 20 lines
+
+Buffer control: (these are used in conjunction fugitive and airline)
+ctrl-t = new buffer
+ctrl-left = navigate left in buffers
+ctrl-right = navigate right in buffers
+:bd, :bdelete = close buffer (:w first if needed)
+:e <filename> = open file for editing in new buffer
+
+
+
+<F2> save session (save opened buffer)
+<F3> restore session (reopen buffers/files)
+
 

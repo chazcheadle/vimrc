@@ -47,7 +47,7 @@ set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
 "set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
-"set hidden             " Hide buffers when they are abandoned
+set hidden             " Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 
 " Source a global configuration file if available
@@ -80,7 +80,8 @@ endif
 
 :map <C-j> 10<C-e>10j
 :map <C-k> 10<C-y>10k
-
+:map <C-M-j> 20<C-e>20j
+:map <C-M-k> 20<C-y>20k
 "au BufWritePre * :set binary | set noeol
 "au BufWritePost * :set nobinary | set eol
 
@@ -89,13 +90,30 @@ set mouse=a
 
 " Key maps
 " ========
-" cycle between buffers
-map <C-Left> <ESC>:bPrevious!<CR>
-map <C-Right> <ESC>:bNext!<CR>
+
+nnoremap <C-Left>     :bprevious<CR>
+nnoremap <C-Right>    :bnext<CR>
+nnoremap <C-t>        :enew<CR>
+inoremap <C-Left>     <Esc>:bprevious<CR>i
+inoremap <C-Right>    <Esc>:bnext<CR>i
+inoremap <C-t>        <Esc>:enew<CR>
+
+" Move to matching [],{}, or () and highlight included lines.
+noremap % v%
+
+nnoremap <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
+inoremap <F2> <Esc>:mksession! ~/.vim_session <cr> " Quick write session with F2
+nnoremap <F3> :source ~/.vim_session <cr>     " And load session with F3
+inoremap <F3> <Esc>:source ~/.vim_session <cr>     " And load session with F3
+
+
+
 
 " Airline settings
 " Enable the list of buffers
 
+
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = 1
 
 
